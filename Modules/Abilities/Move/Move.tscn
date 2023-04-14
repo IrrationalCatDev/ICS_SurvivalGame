@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw7nj85jeduoc"]
+
+[ext_resource type="Script" path="res://Modules/Abilities/Move/Move.gd" id="1_m4tu4"]
+
+[node name="Move" type="Node2D"]
+script = ExtResource("1_m4tu4")

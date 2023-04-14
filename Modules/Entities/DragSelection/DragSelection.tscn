@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkub552h48lct"]
+
+[ext_resource type="Script" path="res://Modules/Entities/DragSelection/DragSelection.gd" id="1_pr2ps"]
+
+[node name="DragSelection" type="Node2D" groups=["Selected_Entities"]]
+script = ExtResource("1_pr2ps")

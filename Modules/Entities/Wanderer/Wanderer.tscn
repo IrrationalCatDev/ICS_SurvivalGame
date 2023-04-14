@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://5ntuudx2dirn"]
+
+[ext_resource type="Texture2D" uid="uid://domu8m20sg35h" path="res://Modules/Entities/Player/player.png" id="1_puec1"]
+[ext_resource type="Script" path="res://Modules/Entities/Wanderer/Wanderer.gd" id="1_w4ttg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra63c"]
+size = Vector2(32, 32)
+
+[node name="Wanderer" type="CharacterBody2D"]
+script = ExtResource("1_w4ttg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ra63c")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+modulate = Color(0, 0.486275, 0.4, 1)
+texture = ExtResource("1_puec1")
