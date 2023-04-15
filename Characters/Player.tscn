@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://d2bht8sb4y7j0"]
+
+[ext_resource type="Script" path="res://Characters/Player.gd" id="1_06w7q"]
+[ext_resource type="PackedScene" uid="uid://lc5hlftfx76m" path="res://NodeComponents/CharacterStats/HealthComponent.tscn" id="1_nifxr"]
+[ext_resource type="Texture2D" uid="uid://b0t1r1gg7rtly" path="res://Characters/PlayerAssets/Character_Sheet.png" id="2_x11fc"]
+
+[sub_resource type="Animation" id="Animation_gbjnq"]
+resource_name = "Facing"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_xb62v"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_u4gxv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="Animation" id="Animation_vfp4y"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [85, 86, 87, 88, 89, 90, 91, 92]
+}
+
+[sub_resource type="Animation" id="Animation_yeo3m"]
+resource_name = "Run"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [93, 94, 95, 96, 97, 98, 99, 100]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fo25y"]
+_data = {
+"Facing": SubResource("Animation_gbjnq"),
+"Idle": SubResource("Animation_xb62v"),
+"RESET": SubResource("Animation_u4gxv"),
+"Run": SubResource("Animation_yeo3m"),
+"Walk": SubResource("Animation_vfp4y")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aansj"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_06w7q")
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_nifxr")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fo25y")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_x11fc")
+hframes = 26
+vframes = 5
+frame = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_aansj")

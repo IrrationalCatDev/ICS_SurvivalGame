@@ -1,11 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5neea3at24ot"]
 
 [ext_resource type="Script" path="res://Modules/Entities/entity_base.gd" id="1_w08qb"]
-[ext_resource type="Texture2D" uid="uid://domu8m20sg35h" path="res://Modules/Entities/Player/player.png" id="2_a6trs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jaqtq"]
 custom_solver_bias = 0.5
 radius = 16.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ouqak"]
+load_path = "res://.godot/imported/player.png-26e816453e1171ae7910fe51f7ddbddd.ctex"
 
 [node name="entity_base" type="CharacterBody2D"]
 script = ExtResource("1_w08qb")
@@ -14,7 +16,7 @@ script = ExtResource("1_w08qb")
 shape = SubResource("CircleShape2D_jaqtq")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-texture = ExtResource("2_a6trs")
+texture = SubResource("CompressedTexture2D_ouqak")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 16.0
