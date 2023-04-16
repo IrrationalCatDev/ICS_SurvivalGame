@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1meclyjx0q8t"]
+
+[ext_resource type="Texture2D" uid="uid://qub5ygubg7kr" path="res://Map/Assets/Tileset.png" id="1_e4ajp"]
+[ext_resource type="Script" path="res://Map/TileEntities/BerryBush.gd" id="1_mtrku"]
+[ext_resource type="PackedScene" uid="uid://bckvle1x6728e" path="res://NodeComponents/ResourceStats/ResourceStat.tscn" id="3_6dvey"]
+[ext_resource type="PackedScene" uid="uid://deqtq7nedgdv6" path="res://NodeComponents/ResourceStats/GrowableResourceState.tscn" id="4_de3p2"]
+
+[node name="BerryBush" type="Node2D"]
+script = ExtResource("1_mtrku")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_e4ajp")
+hframes = 16
+vframes = 16
+frame = 68
+region_rect = Rect2(63.7015, 63.3407, 33.5297, 16.144)
+
+[node name="ResourceStat" parent="." instance=ExtResource("3_6dvey")]
+
+[node name="GrowableResourceState" parent="." node_paths=PackedStringArray("spriteSource", "resourceStat") instance=ExtResource("4_de3p2")]
+spriteSource = NodePath("../Sprite2D")
+resourceStat = NodePath("../ResourceStat")
+resourceStates = Array[int]([67, 68, 69])

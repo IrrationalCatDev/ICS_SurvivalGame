@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://brohvqe0bg8ww"]
+[gd_scene load_steps=7 format=3 uid="uid://brohvqe0bg8ww"]
 
 [ext_resource type="PackedScene" uid="uid://c5neea3at24ot" path="res://Modules/Entities/entity_base.tscn" id="1_37mrn"]
 [ext_resource type="PackedScene" uid="uid://bkub552h48lct" path="res://Modules/Entities/DragSelection/DragSelection.tscn" id="2_plqf6"]
 [ext_resource type="PackedScene" uid="uid://d2bht8sb4y7j0" path="res://Characters/Player.tscn" id="3_bwuca"]
+[ext_resource type="PackedScene" uid="uid://d1meclyjx0q8t" path="res://Map/TileEntities/BerryBush.tscn" id="4_5642a"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_24ovw"]
 vertices = PackedVector2Array(77, 38, 951, 28, 978, 581, 54, 573)
@@ -40,6 +41,9 @@ navigation_polygon = SubResource("NavigationPolygon_24ovw")
 
 [node name="Player" parent="." instance=ExtResource("3_bwuca")]
 position = Vector2(313, 290)
+
+[node name="BerryBush" parent="." instance=ExtResource("4_5642a")]
+position = Vector2(444, 226)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 visible = false
