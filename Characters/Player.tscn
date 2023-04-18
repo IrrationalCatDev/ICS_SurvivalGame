@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2bht8sb4y7j0"]
+[gd_scene load_steps=12 format=3 uid="uid://d2bht8sb4y7j0"]
 
 [ext_resource type="Script" path="res://Characters/Player.gd" id="1_06w7q"]
 [ext_resource type="PackedScene" uid="uid://lc5hlftfx76m" path="res://NodeComponents/CharacterStats/HealthComponent.tscn" id="1_nifxr"]
@@ -96,6 +96,17 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aansj"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_csnbg"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath("AnimationPlayer:current_animation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath("Sprite2D:flip_h")
+properties/2/spawn = true
+properties/2/sync = true
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_06w7q")
 
@@ -114,3 +125,8 @@ frame = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_aansj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_csnbg")
