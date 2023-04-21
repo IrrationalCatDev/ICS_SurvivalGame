@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkj7ltdaoy2su"]
+
+[ext_resource type="Script" path="res://Server/ClientServerScene.gd" id="1_lanti"]
+
+[sub_resource type="SystemFont" id="SystemFont_imqfu"]
+subpixel_positioning = 0
+
+[node name="ClientServerScene" type="Node"]
+script = ExtResource("1_lanti")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.307292
+anchor_top = 0.307099
+anchor_right = 0.692708
+anchor_bottom = 0.692901
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MainMenu"
+horizontal_alignment = 1
+
+[node name="HostButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="TargetIP" type="TextEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_imqfu")
+placeholder_text = "Enter Address
+"
+
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]

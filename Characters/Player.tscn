@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2bht8sb4y7j0"]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://Characters/Player.gd" id="1_06w7q"]
 [ext_resource type="PackedScene" uid="uid://lc5hlftfx76m" path="res://NodeComponents/CharacterStats/HealthComponent.tscn" id="1_nifxr"]
-[ext_resource type="Texture2D" uid="uid://b0t1r1gg7rtly" path="res://Characters/PlayerAssets/Character_Sheet.png" id="2_x11fc"]
+[ext_resource type="Texture2D" uid="uid://b0t1r1gg7rtly" path="res://Assets/PlayerAssets/Character_Sheet.png" id="2_x11fc"]
 
 [sub_resource type="Animation" id="Animation_gbjnq"]
 resource_name = "Facing"

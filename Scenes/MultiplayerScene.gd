@@ -5,6 +5,8 @@ extends Node2D
 
 @onready var Player = preload("res://Characters/Player.tscn")
 
+var server = null
+
 const PORT = 9999 #need a different port?
 var enet_peer = ENetMultiplayerPeer.new()
 
@@ -22,7 +24,8 @@ func _on_host_button_pressed():
 
 func _on_join_button_pressed():
 	main_menu.hide()
-	#enet_peer.create_client('localhost',PORT)
+	if address_entry.text == '':
+		address_entry.text = 'localhost'
 	enet_peer.create_client(address_entry.text,PORT)
 	multiplayer.multiplayer_peer = enet_peer
 
@@ -30,11 +33,13 @@ func add_player(peer_id):
 	var player = Player.instantiate()
 	player.name = str(peer_id)
 	add_child(player)
+	server.add_player(peer_id,player)
 
 func remove_player(peer_id):
 	var player = get_node_or_null(str(peer_id))
 	if player:
 		player.queue_free()
+		server.remove_player(peer_id)
 		
 
 func _unhandled_input(_event):

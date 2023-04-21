@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qub5ygubg7kr"
-path="res://.godot/imported/Tileset.png-37b9d4fdf413b3fdb1845b4a5c91f658.ctex"
+uid="uid://b0t1r1gg7rtly"
+path="res://.godot/imported/Character_Sheet.png-d7a6f6d80e41c4c9a668ad7c1c08a852.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Map/Assets/Tileset.png"
-dest_files=["res://.godot/imported/Tileset.png-37b9d4fdf413b3fdb1845b4a5c91f658.ctex"]
+source_file="res://Assets/PlayerAssets/Character_Sheet.png"
+dest_files=["res://.godot/imported/Character_Sheet.png-d7a6f6d80e41c4c9a668ad7c1c08a852.ctex"]
 
 [params]
 
