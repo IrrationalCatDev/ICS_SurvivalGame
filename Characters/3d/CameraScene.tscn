@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://m5bfh8t6kkqe"]
+
+[ext_resource type="Script" path="res://Characters/3d/CameraScene.gd" id="1_0srch"]
+[ext_resource type="Script" path="res://Characters/3d/SmoothCamera.gd" id="2_5acxn"]
+
+[node name="CameraScene" type="Node3D"]
+script = ExtResource("1_0srch")
+
+[node name="OuterGimbal" type="Node3D" parent="."]
+
+[node name="InnerGimbal" type="Node3D" parent="OuterGimbal"]
+
+[node name="Camera3D" type="Camera3D" parent="OuterGimbal/InnerGimbal"]
+current = true
+script = ExtResource("2_5acxn")
+
+[node name="camera_pos" type="Node3D" parent="OuterGimbal/InnerGimbal"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgrsl6dfp3kb"]
+
+[ext_resource type="PackedScene" uid="uid://uxmx4jfc6a7s" path="res://Characters/3d/character_body_3d.tscn" id="1_ls0cw"]
+[ext_resource type="PackedScene" uid="uid://7gv4fgc56a5c" path="res://Map/TileEntities/test_rainbow_campfire.tscn" id="4_qnttd"]
+[ext_resource type="PackedScene" uid="uid://bdt26q4chbxlk" path="res://Assets/MapAssets/Test_RainbowTree.glb" id="5_skkjr"]
+
+[node name="test_3d" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(200, 1, 200)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.554214, 14.4483)
+radius = 3.0
+radial_segments = 15
+rings = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D/CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 0.88127, 0.472612, 0, -0.472612, 0.88127, 0, 1.16046, -4.09082)
+size = Vector3(3.88031, 1, 7.31143)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D/CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20395, 2.31993, -0.0146875)
+operation = 2
+radius = 2.10224
+height = 2.68425
+sides = 15
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_ls0cw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78299, 0)
+
+[node name="RocketTree" parent="." instance=ExtResource("5_skkjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2678, -1, 27.1536)
+
+[node name="Test_RainbowCampfire" parent="." instance=ExtResource("4_qnttd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.38242, 0.48484, 8.50713)
+
+[node name="Test_RainbowTree" parent="." instance=ExtResource("5_skkjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.07505, 0.125, -0.546078)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.267238, 0.68139, -0.68139, 0, 0.707107, 0.707107, 0.96363, -0.188966, 0.188966, 58.276, 35.4663, 0)
+light_energy = 0.5
+shadow_enabled = true

@@ -1,0 +1,103 @@
+[gd_scene load_steps=17 format=3 uid="uid://7gv4fgc56a5c"]
+
+[ext_resource type="PackedScene" uid="uid://c2en8f15gs5qr" path="res://Assets/MapAssets/Test_RainbowCampfire.glb" id="1_6tngl"]
+[ext_resource type="Gradient" uid="uid://colp78qxwntmh" path="res://Map/TileEntities/test_rainbow_campfire.tres" id="2_vro6c"]
+[ext_resource type="Texture2D" uid="uid://dbft5hkx28hyq" path="res://Assets/MapAssets/smoke_01.png" id="3_1iskx"]
+[ext_resource type="Script" path="res://Map/TileEntities/rainbow_light.gd" id="4_fy1v0"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ddjnn"]
+gradient = ExtResource("2_vro6c")
+
+[sub_resource type="Curve" id="Curve_jja7x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ub0eh"]
+curve = SubResource("Curve_jja7x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l0gd7"]
+direction = Vector3(0, 1, 0)
+spread = 5.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+linear_accel_min = 1.0
+linear_accel_max = 1.0
+angle_max = 360.0
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_ub0eh")
+color_ramp = SubResource("GradientTexture1D_ddjnn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2m470"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_1iskx")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_mu8gx"]
+material = SubResource("StandardMaterial3D_2m470")
+
+[sub_resource type="Gradient" id="Gradient_n48ji"]
+offsets = PackedFloat32Array(0, 0.422764, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xsfxf"]
+gradient = SubResource("Gradient_n48ji")
+
+[sub_resource type="Curve" id="Curve_tj7m4"]
+_data = [Vector2(0, 0.336364), 0.0, 0.0, 0, 0, Vector2(1, 0.236364), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_w702m"]
+curve = SubResource("Curve_tj7m4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pwajm"]
+direction = Vector3(0, 1, 0)
+spread = 5.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+linear_accel_min = 1.0
+linear_accel_max = 1.0
+angle_max = 360.0
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_w702m")
+color = Color(0.431373, 0.431373, 0.431373, 1)
+color_ramp = SubResource("GradientTexture1D_xsfxf")
+
+[sub_resource type="QuadMesh" id="QuadMesh_41ewe"]
+material = SubResource("StandardMaterial3D_2m470")
+
+[node name="Test_RainbowCampfire" instance=ExtResource("1_6tngl")]
+
+[node name="flames" type="GPUParticles3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310866, 0)
+amount = 16
+preprocess = 1.0
+process_material = SubResource("ParticleProcessMaterial_l0gd7")
+draw_pass_1 = SubResource("QuadMesh_mu8gx")
+
+[node name="smoke" type="GPUParticles3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76742, 0)
+preprocess = 1.0
+process_material = SubResource("ParticleProcessMaterial_pwajm")
+draw_pass_1 = SubResource("QuadMesh_41ewe")
+
+[node name="rainbow_light" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.866499, 0)
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
+omni_range = 10.0
+script = ExtResource("4_fy1v0")

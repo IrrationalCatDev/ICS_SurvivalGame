@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://uxmx4jfc6a7s"]
+
+[ext_resource type="Script" path="res://Characters/3d/3dCharacterController.gd" id="1_b761h"]
+[ext_resource type="PackedScene" uid="uid://d1sopo77jf212" path="res://Characters/3d/3dcharacter.tscn" id="2_y03od"]
+[ext_resource type="PackedScene" uid="uid://m5bfh8t6kkqe" path="res://Characters/3d/CameraScene.tscn" id="3_7pgxh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vwleo"]
+radius = 0.330578
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_b761h")
+
+[node name="character_graphics" parent="." instance=ExtResource("2_y03od")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_vwleo")
+
+[node name="CameraScene" parent="." instance=ExtResource("3_7pgxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.635171, 0)
+x_clamp = Vector2(-1, 1)
+cam_dist_clamp = Vector2(2, 5)
+
+[node name="camera_mount" type="Node3D" parent="."]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="camera_mount"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492827, 0.639942, 1.83889)
+visible = false
+
+[node name="camera_target" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.57743)
+visible = false
