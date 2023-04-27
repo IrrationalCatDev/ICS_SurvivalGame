@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdp2k06rd1hpe"]
+
+[ext_resource type="Script" path="res://Map/TileEntities/BuildableObjects/BuildableObject.gd" id="1_mcmlq"]
+
+[node name="BuildableFoundation" type="CSGBox3D"]
+size = Vector3(2, 0.1, 2)
+script = ExtResource("1_mcmlq")

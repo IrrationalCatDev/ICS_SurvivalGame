@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtt6w4c81xw2d"]
+
+[ext_resource type="Script" path="res://Map/TileEntities/BuildableScene.gd" id="1_15dkp"]
+
+[node name="BuildableScene" type="Node3D"]
+script = ExtResource("1_15dkp")

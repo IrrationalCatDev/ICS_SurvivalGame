@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgrsl6dfp3kb"]
+[gd_scene load_steps=5 format=3 uid="uid://bgrsl6dfp3kb"]
 
+[ext_resource type="PackedScene" uid="uid://dtt6w4c81xw2d" path="res://Map/TileEntities/BuildableScene.tscn" id="1_55164"]
 [ext_resource type="PackedScene" uid="uid://uxmx4jfc6a7s" path="res://Characters/3d/character_body_3d.tscn" id="1_ls0cw"]
 [ext_resource type="PackedScene" uid="uid://7gv4fgc56a5c" path="res://Map/TileEntities/test_rainbow_campfire.tscn" id="4_qnttd"]
 [ext_resource type="PackedScene" uid="uid://bdt26q4chbxlk" path="res://Assets/MapAssets/Test_RainbowTree.glb" id="5_skkjr"]
 
 [node name="test_3d" type="Node3D"]
+
+[node name="BuildableScene" parent="." instance=ExtResource("1_55164")]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
@@ -21,17 +24,30 @@ transform = Transform3D(1, 0, 0, 0, 0.88127, 0.472612, 0, -0.472612, 0.88127, 0,
 size = Vector3(3.88031, 1, 7.31143)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D/CSGSphere3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20395, 2.31993, -0.0146875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20395, 2.31993, 0.116204)
 operation = 2
 radius = 2.10224
 height = 2.68425
 sides = 15
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_ls0cw")]
+[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGBox3D/CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.34929, 6.52372)
+inner_radius = 1.11147
+outer_radius = 2.70819
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGBox3D/CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.36941, 8.15304)
+operation = 2
+radius = 2.14528
+height = 1.47688
+sides = 15
+
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("builder_scene") instance=ExtResource("1_ls0cw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78299, 0)
+builder_scene = NodePath("../BuildableScene")
 
 [node name="RocketTree" parent="." instance=ExtResource("5_skkjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2678, -1, 27.1536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2678, 0, 27.1536)
 
 [node name="Test_RainbowCampfire" parent="." instance=ExtResource("4_qnttd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.38242, 0.48484, 8.50713)

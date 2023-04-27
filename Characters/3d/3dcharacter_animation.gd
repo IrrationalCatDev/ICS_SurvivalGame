@@ -17,7 +17,6 @@ func set_is_running(run : bool):
 	animation_tree['parameters/run_transition/transition_request'] = 'running' if run else 'not_running'
 
 func set_move(dir : Vector2):
-	print(dir)
 	last_dir = last_dir.lerp(dir,.1)
 	animation_tree['parameters/run/blend_position'] = last_dir
 	animation_tree['parameters/walk/blend_position'] = last_dir

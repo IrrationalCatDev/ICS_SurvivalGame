@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5js1w6r7cq4n"]
+
+[ext_resource type="Script" path="res://Map/TileEntities/BuildableObjects/BuildableObject.gd" id="1_aro8e"]
+
+[node name="BuildableWall" type="CSGBox3D"]
+size = Vector3(2, 2, 0.1)
+script = ExtResource("1_aro8e")
