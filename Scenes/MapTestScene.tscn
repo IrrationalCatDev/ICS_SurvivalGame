@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8qvi8jdw1ij0"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lqnpd"]
+size = Vector2(100, 100)
+subdivide_width = 50
+subdivide_depth = 50
+
+[node name="MapTestScene" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_lqnpd")
