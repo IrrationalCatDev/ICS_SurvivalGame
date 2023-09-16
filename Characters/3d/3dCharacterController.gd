@@ -18,6 +18,10 @@ var speed_mod : float = 1.0
 @export var camera_min : float = -1
 @export var camera_max : float = 1
 @export var builder_scene : BuildableScene
+
+@export var inventory_data : InventoryData
+signal toggle_inventory
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var was_on_floor : bool
@@ -28,7 +32,7 @@ func _ready():
 	
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-deg_to_rad(event.relative.x)/4)
 		camera_scene.gimbal_rotate_x(-deg_to_rad(event.relative.y)/4)
 		#camera_mount.rotate_x(-deg_to_rad(event.relative.y)/4)
@@ -69,6 +73,9 @@ func _input(event):
 		var collision = camera_scene.get_collision_point()
 		builder_scene.preview(collision, buildable_object)
 
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("ui_access_inventory"):
+		toggle_inventory.emit()
 
 func _physics_process(delta):
 	# Add the gravity.

@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgrsl6dfp3kb"]
+[gd_scene load_steps=9 format=3 uid="uid://bgrsl6dfp3kb"]
 
 [ext_resource type="PackedScene" uid="uid://dtt6w4c81xw2d" path="res://Map/TileEntities/BuildableScene.tscn" id="1_55164"]
+[ext_resource type="Script" path="res://Server/test_3d.gd" id="1_b37i7"]
 [ext_resource type="PackedScene" uid="uid://uxmx4jfc6a7s" path="res://Characters/3d/character_body_3d.tscn" id="1_ls0cw"]
+[ext_resource type="Resource" uid="uid://6guuykpjbgi" path="res://Inventory/test_inv.tres" id="4_6rfuf"]
 [ext_resource type="PackedScene" uid="uid://7gv4fgc56a5c" path="res://Map/TileEntities/test_rainbow_campfire.tscn" id="4_qnttd"]
 [ext_resource type="PackedScene" uid="uid://bdt26q4chbxlk" path="res://Assets/MapAssets/Test_RainbowTree.glb" id="5_skkjr"]
 [ext_resource type="PackedScene" uid="uid://bae71mxy3yymd" path="res://Map/TileEntities/DynamicTree.tscn" id="5_t5jln"]
+[ext_resource type="PackedScene" uid="uid://dydpngwuigfw6" path="res://Inventory/InventoryInterface.tscn" id="6_1xwto"]
 
 [node name="test_3d" type="Node3D"]
+script = ExtResource("1_b37i7")
 
 [node name="BuildableScene" parent="." instance=ExtResource("1_55164")]
 
@@ -46,6 +50,7 @@ sides = 15
 [node name="CharacterBody3D" parent="." node_paths=PackedStringArray("builder_scene") instance=ExtResource("1_ls0cw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78299, 0)
 builder_scene = NodePath("../BuildableScene")
+inventory_data = ExtResource("4_6rfuf")
 
 [node name="RocketTree" parent="." instance=ExtResource("5_skkjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2678, 0, 27.1536)
@@ -63,3 +68,8 @@ shadow_reverse_cull_face = true
 
 [node name="DynamicTree" parent="." instance=ExtResource("5_t5jln")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -1.26604)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" parent="CanvasLayer" instance=ExtResource("6_1xwto")]
+visible = false
