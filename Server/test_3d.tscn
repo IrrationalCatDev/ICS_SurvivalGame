@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgrsl6dfp3kb"]
+[gd_scene load_steps=6 format=3 uid="uid://bgrsl6dfp3kb"]
 
 [ext_resource type="PackedScene" uid="uid://dtt6w4c81xw2d" path="res://Map/TileEntities/BuildableScene.tscn" id="1_55164"]
 [ext_resource type="PackedScene" uid="uid://uxmx4jfc6a7s" path="res://Characters/3d/character_body_3d.tscn" id="1_ls0cw"]
 [ext_resource type="PackedScene" uid="uid://7gv4fgc56a5c" path="res://Map/TileEntities/test_rainbow_campfire.tscn" id="4_qnttd"]
 [ext_resource type="PackedScene" uid="uid://bdt26q4chbxlk" path="res://Assets/MapAssets/Test_RainbowTree.glb" id="5_skkjr"]
+[ext_resource type="PackedScene" uid="uid://bae71mxy3yymd" path="res://Map/TileEntities/DynamicTree.tscn" id="5_t5jln"]
 
 [node name="test_3d" type="Node3D"]
 
@@ -59,3 +60,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.07505, 0.125, -0.546078)
 transform = Transform3D(0.267238, 0.68139, -0.68139, 0, 0.707107, 0.707107, 0.96363, -0.188966, 0.188966, 58.276, 35.4663, 0)
 shadow_enabled = true
 shadow_reverse_cull_face = true
+
+[node name="DynamicTree" parent="." instance=ExtResource("5_t5jln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -1.26604)

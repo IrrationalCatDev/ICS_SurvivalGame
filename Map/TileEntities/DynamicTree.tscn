@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bae71mxy3yymd"]
+
+[ext_resource type="Script" path="res://Map/TileEntities/DynamicTree.gd" id="1_rdxiw"]
+
+[sub_resource type="Curve3D" id="Curve3D_2qfgt"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.5, -0.25, -0.5, 0, 0, 0, 0, 0, 0, -1, -0.5, -1, 0, 0, 0, 0, 0, 0, -1, -0.5, -1, 0, 0, 0, 0, 0, 0, -1, -0.5, -1, 0, 0, 0, 0, 0, 0, -1, -0.5, -1, 0, 0, 0, 0, 0, 0, -1, -0.5, -1, 0, 0, 0, 0, 0, 0, -1, -0.5, -1, 0, 0, 0, 0, 0, 0, -1, -0.5, -1, 0, 0, 0, 0, 0, 0, -1, -0.5, -1, 0, 0, 0, 0, 0, 0, -1, -0.5, -1),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[node name="DynamicTree" type="Node3D"]
+script = ExtResource("1_rdxiw")
+ratio = 0.75
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_2qfgt")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.707106, -0.235702, 0.666666, 0, 0.942809, 0.333333, -0.707106, -0.235702, 0.666666, -0.5, -0.25, -0.5)

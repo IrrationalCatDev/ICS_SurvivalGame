@@ -74,7 +74,6 @@ angle_max = 360.0
 scale_min = 2.0
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_w702m")
-color = Color(0.431373, 0.431373, 0.431373, 1)
 color_ramp = SubResource("GradientTexture1D_xsfxf")
 
 [sub_resource type="QuadMesh" id="QuadMesh_41ewe"]
@@ -84,6 +83,8 @@ material = SubResource("StandardMaterial3D_2m470")
 
 [node name="flames" type="GPUParticles3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310866, 0)
+cast_shadow = 0
+gi_mode = 0
 amount = 16
 preprocess = 1.0
 process_material = SubResource("ParticleProcessMaterial_l0gd7")
@@ -91,6 +92,8 @@ draw_pass_1 = SubResource("QuadMesh_mu8gx")
 
 [node name="smoke" type="GPUParticles3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76742, 0)
+transparency = 0.5
+cast_shadow = 0
 preprocess = 1.0
 process_material = SubResource("ParticleProcessMaterial_pwajm")
 draw_pass_1 = SubResource("QuadMesh_41ewe")
