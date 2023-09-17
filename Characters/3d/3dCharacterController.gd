@@ -75,6 +75,13 @@ func _input(event):
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_access_inventory"):
+		interact()
+		
+func interact():
+	var collision = camera_scene.get_interact_collision()
+	if collision:
+		collision.player_interact()
+	else:
 		toggle_inventory.emit()
 
 func _physics_process(delta):
@@ -115,3 +122,7 @@ func _physics_process(delta):
 			
 
 	move_and_slide()
+
+func get_drop_position() -> Vector3:
+	var direction = -camera_scene.camera_3d.global_transform.basis.z
+	return global_position + direction

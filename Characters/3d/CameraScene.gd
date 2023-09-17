@@ -4,6 +4,7 @@ extends Node3D
 @onready var inner_gimbal = $OuterGimbal/InnerGimbal
 @onready var camera_3d = $OuterGimbal/InnerGimbal/camera_pos
 @onready var ray_cast = $OuterGimbal/InnerGimbal/Camera3D/RayCast3D
+@onready var interactable_ray = $OuterGimbal/InnerGimbal/Camera3D/interactable_ray
 
 @export var x_clamp : Vector2
 @export var y_clamp : Vector2
@@ -27,3 +28,8 @@ func camera_zoom(dist : float):
 	
 func get_collision_point():
 	return ray_cast.get_collision_point()
+
+func get_interact_collision():
+	if interactable_ray.is_colliding():
+		return interactable_ray.get_collider()
+	return null

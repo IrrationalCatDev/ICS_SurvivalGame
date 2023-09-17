@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dxu3d2x1v0sew"]
+
+[ext_resource type="Script" path="res://Inventory/Item/item_data.gd" id="1_opysh"]
+[ext_resource type="Texture2D" uid="uid://dkix1bun50xx7" path="res://Inventory/Item/item_atlas.tres" id="2_8mx8l"]
+
+[resource]
+script = ExtResource("1_opysh")
+name = "Coin"
+description = "Collect more for something special!"
+stackable = true
+texture = ExtResource("2_8mx8l")

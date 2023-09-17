@@ -15,6 +15,11 @@ current = true
 script = ExtResource("2_5acxn")
 
 [node name="RayCast3D" type="RayCast3D" parent="OuterGimbal/InnerGimbal/Camera3D"]
+visible = false
 target_position = Vector3(0, 0, -30)
+
+[node name="interactable_ray" type="RayCast3D" parent="OuterGimbal/InnerGimbal/Camera3D"]
+target_position = Vector3(0, 0, -4)
+collision_mask = 4
 
 [node name="camera_pos" type="Node3D" parent="OuterGimbal/InnerGimbal"]

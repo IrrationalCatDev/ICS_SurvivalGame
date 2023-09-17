@@ -20,8 +20,19 @@ offset_top = 10.0
 offset_right = 50.0
 offset_bottom = 53.0
 
+[node name="ExternalInventory" parent="." instance=ExtResource("1_u0o36")]
+visible = false
+layout_mode = 0
+offset_left = 669.0
+offset_top = 184.0
+offset_right = 709.0
+offset_bottom = 227.0
+
 [node name="GrabbedSlot" parent="." instance=ExtResource("3_tk45u")]
 visible = false
 modulate = Color(1, 1, 1, 0.501961)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgrsl6dfp3kb"]
+[gd_scene load_steps=29 format=3 uid="uid://bgrsl6dfp3kb"]
 
 [ext_resource type="PackedScene" uid="uid://dtt6w4c81xw2d" path="res://Map/TileEntities/BuildableScene.tscn" id="1_55164"]
 [ext_resource type="Script" path="res://Server/test_3d.gd" id="1_b37i7"]
@@ -8,6 +8,67 @@
 [ext_resource type="PackedScene" uid="uid://bdt26q4chbxlk" path="res://Assets/MapAssets/Test_RainbowTree.glb" id="5_skkjr"]
 [ext_resource type="PackedScene" uid="uid://bae71mxy3yymd" path="res://Map/TileEntities/DynamicTree.tscn" id="5_t5jln"]
 [ext_resource type="PackedScene" uid="uid://dydpngwuigfw6" path="res://Inventory/InventoryInterface.tscn" id="6_1xwto"]
+[ext_resource type="PackedScene" uid="uid://cycfylwm0yg0e" path="res://Inventory/chest.tscn" id="9_1jcc4"]
+[ext_resource type="Script" path="res://Inventory/inventory_data.gd" id="10_b56ha"]
+[ext_resource type="Resource" uid="uid://cvtwckdrli4gr" path="res://Inventory/Item/Items/apple.tres" id="11_005np"]
+[ext_resource type="Script" path="res://Inventory/slot_data.gd" id="12_bsyiy"]
+[ext_resource type="Resource" uid="uid://dwvhusy5xd3bu" path="res://Inventory/Item/Items/weapon.tres" id="13_26pem"]
+[ext_resource type="Resource" uid="uid://dkaumuhxm6tcq" path="res://Inventory/Item/Items/blue_book.tres" id="14_0l38o"]
+[ext_resource type="Resource" uid="uid://dtvp11gsfyhx4" path="res://Inventory/Item/Items/scroll.tres" id="14_lfvbs"]
+[ext_resource type="PackedScene" uid="uid://bp20y4k1jeh4o" path="res://Inventory/Item/Items/Pickup.tscn" id="16_6omuf"]
+[ext_resource type="Resource" uid="uid://dxu3d2x1v0sew" path="res://Inventory/Item/Items/coin.tres" id="17_jndmk"]
+
+[sub_resource type="Resource" id="Resource_5kuor"]
+script = ExtResource("12_bsyiy")
+item_data = ExtResource("11_005np")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_gqgel"]
+script = ExtResource("12_bsyiy")
+item_data = ExtResource("14_0l38o")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_dk4qi"]
+script = ExtResource("10_b56ha")
+slot_datas = Array[ExtResource("12_bsyiy")]([SubResource("Resource_5kuor"), null, null, SubResource("Resource_gqgel"), null, null])
+
+[sub_resource type="Resource" id="Resource_m4qsb"]
+script = ExtResource("12_bsyiy")
+item_data = ExtResource("11_005np")
+quantity = 20
+
+[sub_resource type="Resource" id="Resource_gre5s"]
+script = ExtResource("12_bsyiy")
+item_data = ExtResource("14_lfvbs")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_w0vwf"]
+script = ExtResource("10_b56ha")
+slot_datas = Array[ExtResource("12_bsyiy")]([SubResource("Resource_m4qsb"), null, SubResource("Resource_gre5s"), null, null, null])
+
+[sub_resource type="Resource" id="Resource_0fnso"]
+script = ExtResource("12_bsyiy")
+item_data = ExtResource("13_26pem")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_jes2l"]
+script = ExtResource("10_b56ha")
+slot_datas = Array[ExtResource("12_bsyiy")]([null, null, null, null, null, SubResource("Resource_0fnso")])
+
+[sub_resource type="Resource" id="Resource_ham3a"]
+script = ExtResource("12_bsyiy")
+item_data = ExtResource("17_jndmk")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_yjy2k"]
+script = ExtResource("12_bsyiy")
+item_data = ExtResource("11_005np")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_gkwyv"]
+script = ExtResource("12_bsyiy")
+item_data = ExtResource("11_005np")
+quantity = 99
 
 [node name="test_3d" type="Node3D"]
 script = ExtResource("1_b37i7")
@@ -49,6 +110,7 @@ sides = 15
 
 [node name="CharacterBody3D" parent="." node_paths=PackedStringArray("builder_scene") instance=ExtResource("1_ls0cw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78299, 0)
+collision_layer = 2
 builder_scene = NodePath("../BuildableScene")
 inventory_data = ExtResource("4_6rfuf")
 
@@ -73,3 +135,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -1.26604)
 
 [node name="InventoryInterface" parent="CanvasLayer" instance=ExtResource("6_1xwto")]
 visible = false
+
+[node name="chest" parent="." instance=ExtResource("9_1jcc4")]
+inventory_data = SubResource("Resource_dk4qi")
+
+[node name="chest2" parent="." instance=ExtResource("9_1jcc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.38163, 0.559454, -8.83684)
+inventory_data = SubResource("Resource_w0vwf")
+
+[node name="chest3" parent="." instance=ExtResource("9_1jcc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29633, 0.559454, -8.83684)
+inventory_data = SubResource("Resource_jes2l")
+
+[node name="Pickup" parent="." instance=ExtResource("16_6omuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25262, -11.8489)
+slot_data = SubResource("Resource_ham3a")
+
+[node name="Pickup2" parent="." instance=ExtResource("16_6omuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3.25262, -11.8489)
+slot_data = SubResource("Resource_yjy2k")
+
+[node name="Pickup3" parent="." instance=ExtResource("16_6omuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3.25262, -11.8489)
+slot_data = SubResource("Resource_gkwyv")
+
+[connection signal="drop_slot_data" from="CanvasLayer/InventoryInterface" to="." method="_on_inventory_interface_drop_slot_data"]
