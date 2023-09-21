@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cycfylwm0yg0e"]
 
-[ext_resource type="Script" path="res://Server/chest.gd" id="1_ae1nm"]
+[ext_resource type="Script" path="res://Inventory/chest.gd" id="1_cdicx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1g55p"]
 albedo_color = Color(0, 1, 0.458824, 1)
@@ -15,7 +15,7 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.569551, -6.20669)
 collision_layer = 5
 collision_mask = 0
-script = ExtResource("1_ae1nm")
+script = ExtResource("1_cdicx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
